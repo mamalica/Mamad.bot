@@ -1,0 +1,30 @@
+===== Dockerfile =====
+
+این فایل برای اجرای پروژه روی Fly.io لازمه
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY . /app
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+CMD ["python", "main.py"]
+
+===== fly.toml =====
+
+این فایل تنظیمات اصلی پروژه روی Fly.io هست
+
+app = "YOUR_APP_NAME" primary_region = "ams" # می‌تونی به "fra" یا نزدیک‌ترین لوکیشن تغییر بدی
+
+[build] image = "python:3.11"
+
+[env] PORT = "8080"
+
+[[services]] internal_port = 8080 protocol = "tcp"
+
+[[services.ports]] handlers = ["http"] port = 80
+
+[[services.ports]] handlers = ["tls", "http"] port = 443
+
