@@ -1,0 +1,13 @@
+name: Keep Repl Alive
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping-repl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Repl
+        run: curl -fsSL http://f147a269-4a17-415f-b4bd-026d9d47adba-00-2uutavmfaze6c.kirk.replit.dev/
