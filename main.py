@@ -18,13 +18,16 @@ from telegram.ext import (
 from keep_alive import keep_alive
 
 # ====== تنظیمات ======
+import os
+import logging
+
 logging.basicConfig(level=logging.INFO)
 
-BOT_TOKEN         = "7821709533:AAFtgCFnIUMsK6lMB2hq1NxUNU2B3-Yks7I"
-CHANNEL_ID        = "-1001832657716"  # آیدی عددی کانال با پیشوند -100
-CHANNEL_USERNAME  = "sexulogyi"      # یوزرنیم کانال بدون @
-ADMIN_ID          = 303268652        # آیدی عددی خودت
-VIDEO_DB_FILE     = "videos.json"    # فایل JSON برای ذخیرهٔ کد→file_id
+BOT_TOKEN         = os.getenv("BOT_TOKEN")
+CHANNEL_ID        = os.getenv("CHANNEL_ID")
+CHANNEL_USERNAME  = os.getenv("CHANNEL_USERNAME")
+ADMIN_ID          = int(os.getenv("ADMIN_ID"))  # چون ID عددیه باید تبدیل به int بشه
+VIDEO_DB_FILE     = "videos.json"
 
 # وضعیت ادمین هنگام آپلود
 user_state = {}      # { ADMIN_ID: "uploading" }
