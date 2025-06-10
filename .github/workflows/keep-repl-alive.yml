@@ -5,9 +5,11 @@ on:
     - cron: '*/5 * * * *'
   workflow_dispatch:
 
+permissions: write-all  # 👈 همین‌جا اضافه می‌کنی
+
 jobs:
   ping-repl:
     runs-on: ubuntu-latest
     steps:
       - name: Ping Repl
-        run: curl -fsSL http://f147a269-4a17-415f-b4bd-026d9d47adba-00-2uutavmfaze6c.kirk.replit.dev/
+        run: curl -fsSL http://f147a269-4a17-415f-b4bd-026d9d47adba-00-2uutavmfaze6c.kirk.replit.dev/ || exit 0
