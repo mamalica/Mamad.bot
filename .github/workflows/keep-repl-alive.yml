@@ -5,7 +5,7 @@ on:
     - cron: '*/5 * * * *'
   workflow_dispatch:
 
-permissions: write-all  # 👈 همین‌جا اضافه می‌کنی
+permissions: write-all
 
 jobs:
   ping-repl:
