@@ -109,7 +109,7 @@ async def start_link(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
     args = context.args
     if not args:
-        await update.message.reply_text("سلام! برای دریافت ویدیو از لینک اختصاصی استفاده کنید.")
+        await update.message.reply_text("سلام! برای دریافت ویدیو از لینک های اختصاصی که در کانال سکسولوژی وجود داره استفاده کنید.")
         return
 
     code = args[0]
@@ -124,14 +124,14 @@ async def start_link(update: Update, context: ContextTypes.DEFAULT_TYPE):
             url=f"https://t.me/{CHANNEL_USERNAME}"
         )
         await update.message.reply_text(
-            "❌ ابتدا عضو کانال شوید و سپس مجددا روی لینک فیلم بزنید.",
+            "❌ اول عضو کانال شو عزیز دلم😘 بعد دوباره روی لینک ویدیو بزن .",
             reply_markup=InlineKeyboardMarkup([[btn]])
         )
         return
 
     msg = await update.message.reply_video(
         vids[code],
-        caption="🎥 این ویدیو تا ۲۰ ثانیه در دسترس است. لطفاً ذخیره‌اش کنید."
+        caption="🎥 این ویدیو تا ۲۰ ثانیه در دسترس است. لطفاً ذخیره‌اش کنید ."
     )
     await asyncio.sleep(20)
     try:
