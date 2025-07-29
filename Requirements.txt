@@ -1,2 +1,3 @@
-python-telegram-bot==20.5
-Flask
+flask
+python-telegram-bot==20.0b1
+python-dotenv
