@@ -1,6 +1,7 @@
-python-telegram-bot==20.8
+python-telegram-bot==20.*
 python-dotenv
-APScheduler
+apscheduler
 pytz
 tzlocal
+
 
