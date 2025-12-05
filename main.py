@@ -372,6 +372,36 @@ if __name__ == "__main__":
     app.add_handler(MessageHandler(filters.PHOTO | filters.VIDEO | filters.Document.ALL, handle_admin_media))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_admin_text))
 
-    print("✅ ربات روشن شد...")
-    app.run_polling()
+        # ===== متغیرهای Webhook =====
+    PORT = int(os.environ.get('PORT', 8080))
+    WEBHOOK_URL = os.environ.get('WEBHOOK_URL', None)
+
+    if not WEBHOOK_URL:
+        # اگر WEBHOOK_URL در Zeabur تنظیم نشده باشد، باید آن را به صورت دستی پیدا و تنظیم کنید
+        print("❌ WEBHOOK_URL در متغیرها نیست. لطفا آن را در Zeabur تنظیم کنید.")
+        exit()
+
+    # حذف هر گونه Webhook قبلی
+    print("🔄 تنظیم Webhook...")
+    
+    # اجرای ربات در حالت Webhook
+    # توجه: آدرس اصلی Zeabur باید با /bot/BOT_TOKEN ترکیب شود تا کار کند
+    # PTB از شما میخواهد که URL را به /updater بفرستید
+    # URL نهایی را باید از Zeabur بگیرید
+    
+    # برای جلوگیری از خطاهای SSL رایج در محیط های ابری
+    context = None 
+    
+    # URL نهایی تلگرام
+    webhook_path = "/webhook"
+    
+    app.run_webhook(
+        listen="0.0.0.0",
+        port=PORT,
+        url_path=webhook_path,
+        webhook_url=WEBHOOK_URL + webhook_path
+    )
+    
+    print(f"✅ ربات با Webhook روی پورت {PORT} و آدرس {WEBHOOK_URL} روشن شد.")
+    
           
