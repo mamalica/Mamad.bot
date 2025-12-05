@@ -1,7 +1,0 @@
-python-telegram-bot==20.*
-python-dotenv
-apscheduler
-pytz
-tzlocal
-
-
